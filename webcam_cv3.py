@@ -54,26 +54,26 @@ while True:
 
     eyes = eye_cascade.detectMultiScale(roi_gray)
 
-    # eyes = eye_cascade.detectMultiScale(roi_color)
+    eyes = eye_cascade.detectMultiScale(roi_color)
 
     for (ex,ey,ew,eh) in eyes:
         cv2.rectangle(roi_color,(ex,ey),(ex+ew,ey+eh),(0,255,0),2)
 
-    # smile_gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    smile_gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
-    # smile = smile_cascade.detectMultiScale(
-    #     roi_gray,
-    #     scaleFactor=1.7,
-    #     minNeighbors=22,
-    #     minSize=(25,25),
-    #     flags=cv2.cv.CV_HAAR_SCALE_IMAGE
-    #
-    # )
-    #
-    # for (x,y,w,h) in smile:
-    #     print"SMile", len(smile), "smiles"
-    #     cv2.rectangle(roi_color,(x,y),(x+w,y+h),(255, 0, 0), 1)
-    #     print"sourire"
+    smile = smile_cascade.detectMultiScale(
+        roi_gray,
+        scaleFactor=1.7,
+        minNeighbors=22,
+        minSize=(25,25),
+        flags=cv2.cv.CV_HAAR_SCALE_IMAGE
+    
+    )
+    
+    for (x,y,w,h) in smile:
+        print"SMile", len(smile), "smiles"
+        cv2.rectangle(roi_color,(x,y),(x+w,y+h),(255, 0, 0), 1)
+        print"sourire"
 
     if anterior != len(faces):
         anterior = len(faces)
